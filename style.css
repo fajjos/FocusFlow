@@ -470,3 +470,183 @@ input[type="text"]:focus {
 .timer, .tasks {
     transition: all 0.3s ease;
 }
+
+/* Add these media queries at the end of your CSS file */
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .timer-circle {
+        width: 250px;
+        height: 250px;
+    }
+
+    #timer-display {
+        font-size: 3.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .button-group button {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .setting-item input {
+        width: 100%;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #add-task-btn {
+        width: 100%;
+    }
+
+    /* Adjust task list items for mobile */
+    #task-list li {
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust header for mobile */
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Adjust padding and margins for mobile */
+    .tasks, .focus-mode, .quotes, .stats, .daily-goal, .settings {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    /* Adjust productivity stats for mobile */
+    .productivity-stats {
+        padding: 0.8rem;
+    }
+
+    .productivity-stats p {
+        font-size: 0.8rem;
+    }
+
+    /* Adjust quote display for mobile */
+    #quote-display {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    /* Improve touch targets for mobile */
+    .task-checkbox {
+        width: 20px;
+        height: 20px;
+    }
+
+    .delete-task-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    /* Adjust focus mode for mobile */
+    .focus-mode-active {
+        max-width: 100% !important;
+    }
+
+    .timer-focused {
+        transform: scale(1.05);
+    }
+}
+
+/* Add specific styles for very small screens */
+@media screen and (max-width: 380px) {
+    .timer-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    #timer-display {
+        font-size: 2.8rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    body {
+        padding: 1rem;
+    }
+}
+
+/* Add touch-friendly improvements */
+@media (hover: none) {
+    /* Make buttons more touch-friendly */
+    button {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    /* Remove hover effects on mobile */
+    button:hover::before {
+        display: none;
+    }
+
+    .tasks:hover, 
+    .music:hover, 
+    .quotes:hover, 
+    .stats:hover {
+        transform: none;
+    }
+
+    #task-list li:hover {
+        transform: none;
+    }
+
+    /* Add active state feedback for mobile */
+    button:active {
+        background: var(--primary);
+        color: var(--secondary);
+    }
+
+    /* Improve scrolling experience */
+    .task-list {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Add safe area insets for modern mobile browsers */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}
