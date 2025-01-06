@@ -1,0 +1,472 @@
+:root {
+  --primary: #00fff2;
+  --secondary: #0c1016;
+  --accent: #2d3748;
+  --text: #e2e8f0;
+  --glow: 0 0 20px rgba(0, 255, 242, 0.5);
+  --gradient: linear-gradient(135deg, #00fff2 0%, #2600ff 100%);
+  --bg-primary: #0c1016;
+  --bg-secondary: #1a1f35;
+  --text-primary: #e2e8f0;
+  --card-bg: rgba(26, 32, 44, 0.95);
+}
+
+:root[data-theme="light"] {
+  --primary: #2600ff;
+  --secondary: #ffffff;
+  --accent: #e2e8f0;
+  --text: #1a202c;
+  --glow: 0 0 20px rgba(38, 0, 255, 0.3);
+  --gradient: linear-gradient(135deg, #2600ff 0%, #00fff2 100%);
+  --bg-primary: #f0f2f5;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a202c;
+  --card-bg: rgba(255, 255, 255, 0.95);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  margin: 0;
+  color: var(--text-primary);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.container {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.timer {
+  position: relative;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: rgba(45, 55, 72, 0.3);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 2rem 0;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(0, 255, 242, 0.2);
+}
+
+.timer-circle::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: var(--gradient);
+  opacity: 0.1;
+  filter: blur(10px);
+}
+
+#timer-display {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: var(--glow);
+  font-family: 'SF Mono', monospace;
+  position: relative;
+  z-index: 2;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+button {
+  background: rgba(0, 255, 242, 0.1);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient);
+  transition: 0.5s;
+  opacity: 0.5;
+}
+
+button:hover::before {
+  left: 0;
+}
+
+button:hover {
+  color: var(--secondary);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+
+.tasks, .music, .quotes, .stats, .daily-goal, .settings {
+  background: rgba(var(--bg-secondary), 0.2);
+  border: 1px solid rgba(var(--text-primary), 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
+  transition: transform 0.3s ease;
+}
+
+.tasks:hover, .music:hover, .quotes:hover, .stats:hover {
+  transform: translateY(-5px);
+}
+
+#task-list {
+  margin: 1rem 0;
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-left: 3px solid var(--primary);
+}
+
+#task-list li:hover {
+  background: rgba(0, 255, 242, 0.1);
+  transform: translateX(10px);
+}
+
+input[type="text"] {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  padding: 15px 20px;
+  width: calc(100% - 140px);
+  border-radius: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#quote-display {
+  font-style: italic;
+  line-height: 1.6;
+  color: #a0aec0;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+/* Animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.timer.active .timer-circle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--primary);
+  animation: rotate 60s linear infinite;
+}
+
+/* Add these new styles */
+.daily-goal {
+    background: rgba(var(--bg-secondary), 0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+#daily-progress {
+    background: var(--gradient);
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.settings {
+    background: rgba(var(--bg-secondary), 0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.setting-item {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-item input {
+    width: 80px;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+}
+
+/* Sortable styles */
+.sortable-ghost {
+    opacity: 0.5;
+    background: var(--accent) !important;
+}
+
+/* Add header controls styles */
+.header-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* GitHub button specific styles */
+#github-link svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+#github-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* Add smooth transitions for theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* GitHub button styles */
+#github-link {
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#github-link:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+#github-link svg {
+    fill: var(--text-primary);
+}
+
+/* Replace music and sound related styles with these new styles */
+.focus-mode {
+    background: rgba(45, 55, 72, 0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.focus-mode-enabled {
+    max-width: 500px !important;
+}
+
+.focus-mode-enabled .timer {
+    transform: scale(1.1);
+}
+
+.productivity-stats {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+}
+
+.productivity-stats h4 {
+    margin: 0 0 1rem 0;
+    color: var(--primary);
+}
+
+.productivity-stats p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.productivity-stats span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#focus-toggle-btn {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.focus-mode-enabled .task-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Add these styles for drag and drop */
+.sortable-ghost {
+    opacity: 0.5;
+    background: rgba(var(--primary-rgb), 0.2) !important;
+}
+
+.task-content {
+    cursor: grab;
+}
+
+.task-content:active {
+    cursor: grabbing;
+}
+
+/* Style for the settings inputs */
+.setting-item input {
+    width: 60px;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.setting-item input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Focus mode styles */
+.focus-mode-active {
+    max-width: 800px !important;
+    transition: all 0.3s ease;
+}
+
+.timer-focused {
+    transform: scale(1.1);
+    margin: 2rem 0;
+}
+
+.tasks-focused {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#focus-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#focus-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+#focus-toggle-btn.active {
+    background: var(--primary);
+    color: var(--bg-primary);
+}
+
+/* Transition effects */
+.quotes, .stats, .settings, .daily-goal {
+    transition: all 0.3s ease;
+}
+
+.timer, .tasks {
+    transition: all 0.3s ease;
+}
